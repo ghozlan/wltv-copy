@@ -84,6 +84,9 @@ for i = 1:length(fields)
     print_log( sprintf('%s = %s\n', fields{i}, mat2str( getfield(CH,fields{i}) )) );
 end
 
+% Reception interval = transmission interval + max delay (due to channel)
+SIM.T_RX = SIM.T_TRANSMISSION + max(CH.tau);
+
 %% Generate the Channel Matrix
 
 print_log('Generating channel matrix\n')

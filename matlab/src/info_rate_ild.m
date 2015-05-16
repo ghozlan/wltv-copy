@@ -8,7 +8,9 @@ T_TRANSMISSION = SIM.T_TRANSMISSION;
 
 %% Power allocation
 
-[Sigma_X_NORMALIZED, layer] = power_alloc(H_TX, SCHEME, SIM);
+Sigma_X_NORMALIZED = power_alloc(H_TX, SCHEME, SIM);
+IS_RX = true;
+layer = layer_indices(SCHEME, SIM, IS_RX);
 K_prime = length(layer);
 
 %% Compute mutual informal layer by layer
