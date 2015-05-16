@@ -16,15 +16,15 @@ information rates are computed numerically.
 # MATLAB
 
 ### See the code and its output in a friendly format (html)!
-  * Click [multilayer_script](https://htmlpreview.github.io/?https://github.com/ghozlan/rain/blob/master/matlab/html/multilayer_script.html) to see **signal spectra** (input to and output from the channel) and **information rates** achieved by various receivers for
+  * Click [multilayer_script](https://htmlpreview.github.io/?https://github.com/ghozlan/wltv-copy/blob/master/matlab/html/multilayer_script.html) to see **signal spectra** (input to and output from the channel) and **information rates** achieved by various receivers for
    * Channel E, Scheme 1   
    * Note: **scroll down after you click above** to see the figures!
-  * Click [sim_wltv_script](https://htmlpreview.github.io/?https://github.com/ghozlan/rain/blob/master/matlab/html/sim_wltv_script.html) to see **spectra** and **rates** for
+  * Click [sim_wltv_script](https://htmlpreview.github.io/?https://github.com/ghozlan/wltv-copy/blob/master/matlab/html/sim_wltv_script.html) to see **spectra** and **rates** for
    * Channel A, Scheme 1   
    * Channel A, Scheme 2   
    * Channel E, Scheme 1  
    * Note: less code is revealed here than in multilayer_script. Also, do not forget to scroll down after you click to see the figures!
-  * Click [load_batch_script](https://htmlpreview.github.io/?https://github.com/ghozlan/rain/blob/master/matlab/html/load_batch_script.html) to see **comparisons** between the information rates of Scheme 1 and Scheme 2.
+  * Click [load_batch_script](https://htmlpreview.github.io/?https://github.com/ghozlan/wltv-copy/blob/master/matlab/html/load_batch_script.html) to see **comparisons** between the information rates of Scheme 1 and Scheme 2.
 
 ### Source code
 * The source code can be found [here](/matlab/src/).
