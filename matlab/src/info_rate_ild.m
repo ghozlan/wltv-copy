@@ -8,9 +8,9 @@ T_TRANSMISSION = SIM.T_TRANSMISSION;
 
 %% Power allocation
 
-Sigma_X_NORMALIZED = power_alloc(H_TX, SCHEME, SIM);
+[Sigma_X_NORMALIZED, layer] = power_alloc(H_TX, SCHEME, SIM);
 IS_RX = true;
-layer = layer_indices(SCHEME, SIM, IS_RX);
+layer_rx = layer_indices(SCHEME, SIM, IS_RX);
 K_prime = length(layer);
 
 %% Compute mutual informal layer by layer
@@ -20,7 +20,7 @@ for k = 1:K_prime
     sigma2_N = N0/2 * REAL_DIM_PER_SYM * (1/dt);  % DEPENDS ON WHETHER NOISE IS REAL (PASSBAND) OR COMPLEX (BASEBAND)
     %Sigma_N = sigma2_N * eye(length(layer{k}));
     
-    H_RX_k = H_RX(:,layer{k});
+    H_RX_k = H_RX(:,layer_rx{k});
     H_RXCHTX = H_RX_k' * H_CH * H_TX;
     
     I_vec = zeros(1,length(P_vec));
