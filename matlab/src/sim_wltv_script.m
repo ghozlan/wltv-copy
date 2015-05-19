@@ -1,6 +1,6 @@
 %% Simulations
 
-%% Set Signal-to-Noise Ration (SNR)
+%% Set Signal-to-Noise Ratio (SNR)
 
 SNRdB_vec = 0:30;   % SNR values in dB
 

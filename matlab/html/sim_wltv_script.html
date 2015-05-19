@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>Simulations</title><meta name="generator" content="MATLAB 7.14"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2015-05-15"><meta name="DC.source" content="sim_wltv_script.m"><style type="text/css">
+      --><title>Simulations</title><meta name="generator" content="MATLAB 7.14"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2015-05-19"><meta name="DC.source" content="sim_wltv_script.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -55,7 +55,7 @@ span.syscmd { color:#B28C00 }
 .footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
 .footer p { margin:0px; }
 
-  </style></head><body><div class="content"><h1>Simulations</h1><!--introduction--><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Set Signal-to-Noise Ration (SNR)</a></li><li><a href="#2">Channel A, Scheme 1</a></li><li><a href="#3">Channel A, Scheme 2</a></li><li><a href="#4">Channel E, Scheme 2</a></li></ul></div><h2>Set Signal-to-Noise Ration (SNR)<a name="1"></a></h2><pre class="codeinput">SNRdB_vec = 0:30;   <span class="comment">% SNR values in dB</span>
+  </style></head><body><div class="content"><h1>Simulations</h1><!--introduction--><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Set Signal-to-Noise Ratio (SNR)</a></li><li><a href="#2">Channel A, Scheme 1</a></li><li><a href="#3">Channel A, Scheme 2</a></li><li><a href="#4">Channel E, Scheme 2</a></li></ul></div><h2>Set Signal-to-Noise Ratio (SNR)<a name="1"></a></h2><pre class="codeinput">SNRdB_vec = 0:30;   <span class="comment">% SNR values in dB</span>
 </pre><h2>Channel A, Scheme 1<a name="2"></a></h2><pre class="codeinput">channel_index = 1;
 scheme_index = 1;
 multilayer(channel_index, scheme_index, SNRdB_vec)
@@ -83,16 +83,16 @@ Layer 3: 2x136 (real) symbols
 Layer 4: 2x272 (real) symbols
 f_min = 1.00000, f_max = 16.00000, B = 15.00000
 Computing rate for optimal receiver
-(266.23 sec)
+(192.01 sec)
 Computing rate for expanded band receiver
-(125.62 sec)
+(95.75 sec)
 Computing rate for same band receiver with joint layer decoding
-(19.85 sec)
+(12.43 sec)
 Computing rate for same band receiver with individual layer decoding
-(18.46 sec)
+(7.91 sec)
 Collecting results
-Output saved to file: channela_scheme1_060314
-Simulation runtime: 435.00 sec.
+Output saved to file: channela_scheme1_003554
+Simulation runtime: 312.33 sec.
 </pre><img vspace="5" hspace="5" src="sim_wltv_script_01.png" alt=""> <img vspace="5" hspace="5" src="sim_wltv_script_02.png" alt=""> <h2>Channel A, Scheme 2<a name="3"></a></h2><pre class="codeinput">channel_index = 1;
 scheme_index = 2;
 multilayer(channel_index, scheme_index, SNRdB_vec)
@@ -123,16 +123,16 @@ Layer 4: 2x135 (real) symbols
 Layer 5: 2x215 (real) symbols
 f_min = 1.00000, f_max = 12.69921, B = 11.69921
 Computing rate for optimal receiver
-(248.44 sec)
+(230.37 sec)
 Computing rate for expanded band receiver
-(91.04 sec)
+(83.86 sec)
 Computing rate for same band receiver with joint layer decoding
-(31.93 sec)
+(19.13 sec)
 Computing rate for same band receiver with individual layer decoding
-(16.82 sec)
+(11.81 sec)
 Collecting results
-Output saved to file: channela_scheme2_061007
-Simulation runtime: 398.35 sec.
+Output saved to file: channela_scheme2_004147
+Simulation runtime: 349.54 sec.
 </pre><img vspace="5" hspace="5" src="sim_wltv_script_03.png" alt=""> <img vspace="5" hspace="5" src="sim_wltv_script_04.png" alt=""> <h2>Channel E, Scheme 2<a name="4"></a></h2><pre class="codeinput">channel_index = 5;
 scheme_index = 2;
 multilayer(channel_index, scheme_index, SNRdB_vec)
@@ -163,22 +163,22 @@ Layer 4: 2x139 (real) symbols
 Layer 5: 2x222 (real) symbols
 f_min = 1.00000, f_max = 12.69921, B = 11.69921
 Computing rate for optimal receiver
-(212.05 sec)
+(217.60 sec)
 Computing rate for expanded band receiver
-(89.68 sec)
+(83.87 sec)
 Computing rate for same band receiver with joint layer decoding
-(31.64 sec)
+(19.95 sec)
 Computing rate for same band receiver with individual layer decoding
-(18.08 sec)
+(13.09 sec)
 Collecting results
-Output saved to file: channele_scheme2_061614
-Simulation runtime: 362.38 sec.
+Output saved to file: channele_scheme2_004737
+Simulation runtime: 347.32 sec.
 </pre><img vspace="5" hspace="5" src="sim_wltv_script_05.png" alt=""> <img vspace="5" hspace="5" src="sim_wltv_script_06.png" alt=""> <p class="footer"><br>
       Published with MATLAB&reg; 7.14<br></p></div><!--
 ##### SOURCE BEGIN #####
 %% Simulations
 
-%% Set Signal-to-Noise Ration (SNR)
+%% Set Signal-to-Noise Ratio (SNR)
 
 SNRdB_vec = 0:30;   % SNR values in dB
 

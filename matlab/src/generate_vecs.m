@@ -1,15 +1,23 @@
-function [H_TX, f_min, f_max] = generate_vecs(W_base,a_base,N_layers,fc_base, SIM)
+function [H_TX, f_min, f_max] = generate_vecs(W_base,a_base,N_layers,fc_base, SIM, IS_RX)
 PASSBAND = SIM.PASSBAND;
 F_samp = SIM.F_samp;
 df = SIM.df;
 dt = SIM.dt;
-T_TRANSMISSION = SIM.T_TRANSMISSION;
+T_XX = SIM.T_TRANSMISSION;
 T_SIMULATION = SIM.T_SIMULATION;
+
+if nargin == 5
+    IS_RX = false; 
+end
+
+T_XX = SIM.T_TRANSMISSION;
+if IS_RX==true, T_XX = SIM.T_RX; end
+
 
 a_vec = a_base.^(0:N_layers-1);
 
 T_sym = 1/W_base;
-N_sym = floor(T_TRANSMISSION/T_sym);         % number of signals %XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+N_sym = floor(T_XX/T_sym);                   % number of signals %XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 L = floor(T_sym/dt);                         % oversampling factor
 
 idx = 1;

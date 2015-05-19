@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>Load Files and Compare Information Rates</title><meta name="generator" content="MATLAB 7.14"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2015-05-15"><meta name="DC.source" content="load_batch_script.m"><style type="text/css">
+      --><title>Load Files and Compare Information Rates</title><meta name="generator" content="MATLAB 7.14"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2015-05-19"><meta name="DC.source" content="load_batch_script.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -70,14 +70,10 @@ sim_file_list = dir([path sim_file_pattern]);
     <span class="comment">% store filenames in a dict indexed by channel and scheme</span>
     filenames.(filename_ch).([<span class="string">'sch'</span> filename_sch]) = filename;
 <span class="keyword">end</span>
-</pre><pre class="codeoutput">File  channela_scheme1_060314.mat : Channel A, Scheme 1
-File  channela_scheme2_061007.mat : Channel A, Scheme 2
-File  channele_scheme1_053430.mat : Channel E, Scheme 1
-File  channele_scheme1_054101.mat : Channel E, Scheme 1
-File  channele_scheme1_054357.mat : Channel E, Scheme 1
-File  channele_scheme1_054724.mat : Channel E, Scheme 1
-File  channele_scheme1_055339.mat : Channel E, Scheme 1
-File  channele_scheme2_061614.mat : Channel E, Scheme 2
+</pre><pre class="codeoutput">File  channela_scheme1_003554.mat : Channel A, Scheme 1
+File  channela_scheme2_004147.mat : Channel A, Scheme 2
+File  channele_scheme1_002654.mat : Channel E, Scheme 1
+File  channele_scheme2_004737.mat : Channel E, Scheme 2
 </pre><h2>Load results from files<a name="3"></a></h2><pre class="codeinput"><span class="comment">%CHANNEL_LIST = {'A','B','C','D','E'};</span>
 <span class="comment">%SCHEME_LIST = {1, 2, 3};</span>
 
@@ -112,10 +108,10 @@ RESULTS = struct;
 <span class="keyword">end</span>
 RESULTS.SNRdB = DATA.SNRdB; <span class="comment">% store once, since we run all simulations for the same SNR values</span>
 SNRdB_vec = RESULTS.SNRdB;
-</pre><pre class="codeoutput">Loading channela_scheme1_060314.mat
-Loading channela_scheme2_061007.mat
-Loading channele_scheme1_055339.mat
-Loading channele_scheme2_061614.mat
+</pre><pre class="codeoutput">Loading channela_scheme1_003554.mat
+Loading channela_scheme2_004147.mat
+Loading channele_scheme1_002654.mat
+Loading channele_scheme2_004737.mat
 </pre><h2>Plot information rates<a name="4"></a></h2><pre class="codeinput">LineWidth = 2;
 MarkerSize = 10;
 FontSize = 17;

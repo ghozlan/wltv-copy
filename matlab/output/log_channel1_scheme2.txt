@@ -9,12 +9,12 @@ alpha = [1 2]
 Generating channel matrix
 Generating receiver matrix
 Computing rate for optimal receiver
-(248.44 sec)
+(230.37 sec)
 Computing rate for expanded band receiver
-(91.04 sec)
+(83.86 sec)
 Computing rate for same band receiver with joint layer decoding
-(31.93 sec)
+(19.13 sec)
 Computing rate for same band receiver with individual layer decoding
-(16.82 sec)
+(11.81 sec)
 Collecting results
-Simulation runtime: 398.35 sec.
+Simulation runtime: 349.54 sec.
