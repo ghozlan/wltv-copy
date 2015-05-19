@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>Multi-Layer Transmission in Wideband Linear Time-Varying Channels</title><meta name="generator" content="MATLAB 7.14"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2015-05-15"><meta name="DC.source" content="multilayer_script.m"><style type="text/css">
+      --><title>Multi-Layer Transmission in Wideband Linear Time-Varying Channels</title><meta name="generator" content="MATLAB 7.14"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2015-05-19"><meta name="DC.source" content="multilayer_script.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -133,6 +133,9 @@ fields = fieldnames(CH);
 <span class="keyword">for</span> i = 1:length(fields)
     print_log( sprintf(<span class="string">'%s = %s\n'</span>, fields{i}, mat2str( getfield(CH,fields{i}) )) );
 <span class="keyword">end</span>
+
+<span class="comment">% Reception interval = transmission interval + max delay (due to channel)</span>
+SIM.T_RX = SIM.T_TRANSMISSION + max(CH.tau);
 </pre><pre class="codeoutput">Channel parameters:
 N_paths = 3
 h_wb = [1 -0.7 1.5]
@@ -171,7 +174,7 @@ runtime = toc;
 print_log(sprintf(<span class="string">'(%.2f sec)\n'</span>,runtime))
 RUNTIMES.OPT = runtime;
 </pre><pre class="codeoutput">Computing rate for optimal receiver
-(135.58 sec)
+(133.23 sec)
 </pre><h2>Multi-Layer Receiver, Expanded Bandwidth with Joint Decoding<a name="10"></a></h2><pre class="codeinput">print_log(<span class="string">'Computing rate for expanded band receiver\n'</span>)
 
 tic
@@ -180,7 +183,7 @@ runtime = toc;
 print_log(sprintf(<span class="string">'(%.2f sec)\n'</span>,runtime))
 RUNTIMES.EB = runtime;
 </pre><pre class="codeoutput">Computing rate for expanded band receiver
-(70.94 sec)
+(92.49 sec)
 </pre><h2>Multi-Layer Receiver, Same Bandwidth with Joint Layer Decoding<a name="11"></a></h2><pre class="codeinput">print_log(<span class="string">'Computing rate for same band receiver with joint layer decoding\n'</span>)
 
 tic
@@ -189,7 +192,7 @@ runtime = toc;
 print_log(sprintf(<span class="string">'(%.2f sec)\n'</span>,runtime))
 RUNTIMES.SB_JLD = runtime;
 </pre><pre class="codeoutput">Computing rate for same band receiver with joint layer decoding
-(20.69 sec)
+(39.83 sec)
 </pre><h2>Multi-Layer Receiver, Same Bandwidth with Individual Layer Decoding<a name="12"></a></h2><pre class="codeinput">print_log(<span class="string">'Computing rate for same band receiver with individual layer decoding\n'</span>)
 
 tic
@@ -198,7 +201,7 @@ runtime = toc;
 print_log(sprintf(<span class="string">'(%.2f sec)\n'</span>,runtime))
 RUNTIMES.SB_ILD = runtime;
 </pre><pre class="codeoutput">Computing rate for same band receiver with individual layer decoding
-(11.02 sec)
+(7.83 sec)
 </pre><h2>Collect and Save Results<a name="13"></a></h2><pre class="codeinput">print_log(<span class="string">'Collecting results\n'</span>)
 
 SNR_vec = P_vec/N0;
@@ -229,8 +232,8 @@ fprintf(<span class="string">'Output saved to file: %s\n'</span>,data_filename)
 print_log(sprintf(<span class="string">'Simulation runtime: %.2f sec.\n'</span>,sim_runtime))
 fclose(log_file);
 </pre><pre class="codeoutput">Collecting results
-Output saved to file: channele_scheme1_055339
-Simulation runtime: 244.53 sec.
+Output saved to file: channele_scheme1_002654
+Simulation runtime: 279.01 sec.
 </pre><h2>Plot Input and Output Spectra (broken down by layer)<a name="14"></a></h2><pre class="codeinput">plot_spectrum(H_TX, H_CH, SCH, CH, SIM)
 
 fig_filename = [<span class="string">'SPECTRUM_'</span> <span class="string">'CH'</span> CHANNEL_LABEL{channel_index} <span class="string">'_SCH'</span> num2str(scheme_index) <span class="string">'.eps'</span>];
@@ -366,6 +369,9 @@ fields = fieldnames(CH);
 for i = 1:length(fields)
     print_log( sprintf('%s = %s\n', fields{i}, mat2str( getfield(CH,fields{i}) )) );
 end
+
+% Reception interval = transmission interval + max delay (due to channel)
+SIM.T_RX = SIM.T_TRANSMISSION + max(CH.tau);
 
 %% Generate the Channel Matrix
 
