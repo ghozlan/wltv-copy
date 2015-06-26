@@ -18,7 +18,7 @@ T_sym = 1/W
 %
 
 %set(figure(2011),'Name','Mutual Info [Baseline]')
-PdB_vec = 0:20;
+PdB_vec = -10:5;
 P_vec = 10.^(PdB_vec/10);
 
 %I0 = (1/T_sym) * log(1+P_vec);
@@ -154,7 +154,7 @@ I_LTI = I_vec;
 hold on
 plot(P_vec,I_LTI,'r+','LineWidth',2)
 hold off
-legend('AWGN (formula)','AWGN (using ISI formula)','ISI (formula)')
+legend('AWGN (formula)','AWGN (using ISI formula)','ISI (formula, no waterfilling)')
 
 set(figure(7001),'Name','H(f) AWGN vs ISI')
 subplot(2,1,1)
@@ -254,7 +254,42 @@ plot(P_vec,I_ISI_PA,'gs:','LineWidth',2)
 hold off
 legend('AWGN (formula)','AWGN (using ISI formula)','ISI (formula), no waterfilling','ISI (formula), waterfilling')
 
+%%
+close all
+PdB_vec = 10*log10(P_vec);
+set(figure(1000),'Name','Water filling vs Uniform')
+subplot(1,2,1)
+plot(PdB_vec,I_ISI_PA,'gs:','LineWidth',2)
+hold on
+plot(PdB_vec,I_LTI,'r+','LineWidth',2) % no waterfilling
+hold off
+xlabel('P (dB)')
+ylabel('Rate (nats)')
+legend('water filling','uniform')
 
+
+Pf_UNIFORM = zeros(length(Hf_ISI),1);
+Pf_UNIFORM(abs(f-fc)<W/2) = P/W;
+Pf_UNIFORM = fftshift(Pf_UNIFORM);
+[sum(Pf_UNIFORM)*df P];
+
+figure(1000); 
+subplot(2,2,2)
+plot(f,abs(fftshift(Hf_ISI)))
+old_axis = axis;
+axis([-W W old_axis(3:4)])
+xlabel('f')
+ylabel('P(f)')
+subplot(2,2,4)
+plot(f,fftshift(Pf),'k')
+hold on
+plot(f,fftshift(Pf_UNIFORM),'r')
+hold off
+old_axis = axis;
+axis([-W W old_axis(3:4)])
+xlabel('f')
+ylabel('P(f)')
+legend('water filling','uniform')
 %% Workbench of waterfilling code
 % idx = 6
 % P_max = P_vec(idx)

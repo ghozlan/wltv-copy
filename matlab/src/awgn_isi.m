@@ -71,28 +71,34 @@ CH.N_paths = 2; CH.h_wb = [1 2]; CH.tau = [0 2]; CH.alpha = [1 1];
 ISI_CHANNELS{2} = CH;
 CH.N_paths = 2; CH.h_wb = [1 -1]; CH.tau = [0 1.5]; CH.alpha = [1 1];
 ISI_CHANNELS{3} = CH;
+CH.N_paths = 2; CH.h_wb = [1 -1]; CH.tau = [0 1]; CH.alpha = [1 1];
+ISI_CHANNELS{3} = CH;
+CH.N_paths = 4; CH.h_wb = -2+4*rand(1,CH.N_paths); CH.tau = 10*rand(1,CH.N_paths); CH.alpha = ones(1,CH.N_paths);
+ISI_CHANNELS{5} = CH;
 
+channel_index = 3
 if(CHANNEL==ISI)
     CH = ISI_CHANNELS{channel_index};
 end
 
-% Wideband linear time-varying channels
-CH.N_paths = 2; CH.h_wb = [1 1/2]; CH.tau = [0 2]; CH.alpha = [1 2]; %CHANNEL A
-WBLTV_CHANNELS{1} = CH;
-CH.N_paths = 2; CH.h_wb = [1 1/2]; CH.tau = [0 2]; CH.alpha = [1 1.587401051968199]; % CHANNEL B
-WBLTV_CHANNELS{2} = CH;
-CH.N_paths = 2; CH.h_wb = [1 1.5]; CH.tau = [0 2]; CH.alpha = [1 2]; %CHANNEL C
-WBLTV_CHANNELS{3} = CH;
-CH.N_paths = 2; CH.h_wb = [1 1.5]; CH.tau = [2 3]; CH.alpha = [1 2]; %CHANNEL D
-WBLTV_CHANNELS{4} = CH;
-CH.N_paths = 3; CH.h_wb = [1 -0.7 1.5]; CH.tau = [2 1 3]; CH.alpha = [1 1.25 2]; %CHANNEL E
-WBLTV_CHANNELS{5} = CH;
-
-CHANNEL_LABEL = {'A','B','C','D','E'};
-
-if(CHANNEL==WBLTV)
-    CH = WBLTV_CHANNELS{channel_index};
-end
+% SECTION BELOW IS COMMENTED BECAUSE IT OVERRIDES 'CH' ABOVE
+% % Wideband linear time-varying channels
+% CH.N_paths = 2; CH.h_wb = [1 1/2]; CH.tau = [0 2]; CH.alpha = [1 2]; %CHANNEL A
+% WBLTV_CHANNELS{1} = CH;
+% CH.N_paths = 2; CH.h_wb = [1 1/2]; CH.tau = [0 2]; CH.alpha = [1 1.587401051968199]; % CHANNEL B
+% WBLTV_CHANNELS{2} = CH;
+% CH.N_paths = 2; CH.h_wb = [1 1.5]; CH.tau = [0 2]; CH.alpha = [1 2]; %CHANNEL C
+% WBLTV_CHANNELS{3} = CH;
+% CH.N_paths = 2; CH.h_wb = [1 1.5]; CH.tau = [2 3]; CH.alpha = [1 2]; %CHANNEL D
+% WBLTV_CHANNELS{4} = CH;
+% CH.N_paths = 3; CH.h_wb = [1 -0.7 1.5]; CH.tau = [2 1 3]; CH.alpha = [1 1.25 2]; %CHANNEL E
+% WBLTV_CHANNELS{5} = CH;
+% 
+% CHANNEL_LABEL = {'A','B','C','D','E'};
+% 
+% if(CHANNEL==WBLTV)
+%     CH = WBLTV_CHANNELS{channel_index};
+% end
 
 
 %% Generate the channel matrix
